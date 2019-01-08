@@ -1,0 +1,697 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KnimeNet</name>
+    </assembly>
+    <members>
+        <member name="T:KnimeNet.CommandLine.ShellProxy">
+            <summary>
+            This instance manages the communication with KNIME.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.ShellProxy._knimeDir">
+            <summary>
+            The Path to the KNIME executable.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.ShellProxy._knimeApp">
+            <summary>
+            The KNIME executable string.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.ShellProxy._executionCancellationTokenSource">
+            <summary>
+            Used to cancel a pending execution.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.ShellProxy.Timeout">
+            <summary>
+            Timeout in seconds before the proxy returns and tries to kill a running process. If left empty no timeout is set.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.ShellProxy.KillOnError">
+            <summary>
+            Whether or not a started process should be terminated after an error occured during batch execution.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.ShellProxy.Arguments">
+            <summary>
+            The command line argument package.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.ShellProxy.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:KnimeNet.CommandLine.ShellProxy" />.
+            </summary>
+            <param name="knimeDir">The path to the KNIME executable. If left empty KNIME will be called without absolute path to the executable and must therefore be known in the PATH.</param>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Invalid KNIME directory</exception>
+            <exception cref="T:System.NotImplementedException">Could not determine operating system type</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException">The KNIME executable could not be found</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+        </member>
+        <member name="M:KnimeNet.CommandLine.ShellProxy.StartKnime(System.String,System.IO.TextWriter,System.IO.TextWriter)">
+            <summary>
+            Calls the KNIME instance with the parameters given.
+            </summary>
+            <param name="workDir">Sets the working directory for the process to be started. If left empty this defaults to %SYSTEMROOT%\system32</param>
+            <param name="output">Collects the redirected output messages.</param>
+            <param name="error">Collects the redirected error messages.</param>
+            <returns>An instance of <see cref="T:KnimeNet.CommandLine.Types.ExitStatus"/></returns>
+            <exception cref="T:System.NullReferenceException">KNIME either exited too fast or could not get started at all.</exception>
+        </member>
+        <member name="M:KnimeNet.CommandLine.ShellProxy.AbortKnime">
+            <summary>
+            Cancels a pending KNIME execution.
+            </summary>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Args.TextWriterEventArgs">
+            <summary>
+            <see cref="T:System.EventArgs"/> containing an <see cref="T:System.String"/>
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Args.TextWriterEventArgs.Data">
+            <summary>
+            Gets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Args.TextWriterEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.Args.TextWriterEventArgs"/> class.
+            </summary>
+            <param name="data">The data stream.</param>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.ArgumentBag">
+            <summary>
+            Description of ArgumentBag.
+            http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fruntime-options.html
+            https://tech.knime.org/faq#q12
+            If you pass no options, all available options will be listed.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.ArgumentBag._useProperties">
+            <summary>
+            Indicates if the properties or a single string should be used to create the argument line.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.ArgumentBag._argumentLine">
+            <summary>
+            The argument line that is used if properties shouldn't be used for creating an argument line.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.NoSave">
+            <summary>
+            If this is specified, the workflow is not saved after execution has finished.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Reset">
+            <summary>
+            Reset workflow prior to execution.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.FailOnLoadError">
+            <summary>
+            Don't execute if there are errors during workflow loading
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.UpdateLinks">
+            <summary>
+            Update metanode links to the latest version
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Credentials">
+            <summary>
+            Credentials to be used during the workflow.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.MasterKey">
+            <summary>
+            Master password (used in e.g. database nodes).
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Preferences">
+            <summary>
+            Path to the file containing Eclipse/KNIME preferences.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.WorkFlowFile">
+            <summary>
+            Zip file with a ready-to-execute workflow.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.WorkFlowDir">
+            <summary>
+            Directory with a ready-to-execute workflow.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.DestFile">
+            <summary>
+            Zip file where the executed workflow should be written to.
+            If omitted the workflow is only saved in place.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.DestDir">
+            <summary>
+            Directory where the executed workflow is saved to. 
+            If omitted the workflow is only saved in place.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.WorkFlowVariables">
+            <summary>
+            Define or overwrite workflow variables.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Application">
+            <summary>
+            The identifier of the application to run. The value given here overrides any application defined by the product being run.
+            In command line environments this is KNIME_BATCH_APPLICATION
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Arch">
+            <summary>
+            The processor architecture value. 
+            The value should be one of the processor architecture names known to Eclipse (e.g., x86, ppc, sparc, ...). 
+            See org.eclipse.osgi.service.environment.Constants for known values.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Clean">
+            <summary>
+            If set to "true", any cached data used by the OSGi framework and eclipse runtime will be wiped clean. 
+            This will clean the caches used to store bundle dependency resolution and eclipse extension registry data. 
+            Using this option will force eclipse to reinitialize these caches.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.Data">
+            <summary>
+            The instance data location for this session. Plug-ins use this location to store their data. 
+            For example, the Resources plug-in uses this as the default location for projects (aka the workspace). 
+            See the section on locations for more details.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.LauncherLibrary">
+            <summary>
+            The location of the eclipse executable's companion shared library. 
+            If not specified the executable looks in the plugins directory for the appropriate org.eclipse.equinox.launcher.[platform] fragment with the highest version and uses the shared library named eclipse_* inside.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.LauncherIni">
+            <summary>
+            The location of the product .ini file to use.  
+            If not specified the executable will look for a file beside the launcher with the same name and the extension .ini (i.e. eclipse.exe looks for eclipse.ini, product.exe looks for product.ini).
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.SuppressErrors">
+            <summary>
+            If specified the executable will not display any error or message dialogs.
+            This is useful if the executable is being used in an unattended situation.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.LauncherAppendVmArgs">
+            <summary>
+            If specified, any VM arguments on the commandline will be appended to any VM arguments specified in the launcher .ini file. 
+            Using this option is recommended in every launcher .ini file that specifies VM arguments, because the default behavior of overriding VM arguments can have unexpected side-effects.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.LauncherTimeout">
+            <summary>
+            A timeout value for how long the launcher should spend trying to communicate with an already running eclipse before the launcher gives up and launches a new eclipse instance. 
+            Default is 60 (seconds).
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.NoSplash">
+            <summary>
+            Controls whether or not the splash screen is shown.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.NoExit">
+            <summary>
+            if "true", the OSGi Framework will not be shut down after the Eclipse application has ended. 
+            This is useful for examining the OSGi Framework after the Eclipse application has ended.
+            Note that the VM will terminate if no active non-daemon threads exists.
+            <remarks>This option should be avoided in unattended runs since it blocks KNIME. You should provide an Timeout together with this option.</remarks>
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.ConsoleLog">
+            <summary>
+            Causes a new window to be opened containing the log messages and will keep the window open after the execution has finished. 
+            You will need to close the window manually and an error message is produced from the Java process which you can safely ignore. 
+            <remarks>This option should be avoided in unattended runs since it blocks KNIME. You should provide an Timeout together with this option.</remarks>
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ArgumentBag.VmArguments">
+            <summary>
+            Lists the VM arguments used to run Eclipse. This information is used to construct relaunch command lines.
+            When passed to the Eclipse, this option is used to customize the operation of the Java VM to use to run Eclipse. 
+            If specified, this option must come at the end of the command line. Even if not specified on the executable command line, the executable will automatically add the relevant arguments (including the class being launched) to the command line passed into Java using the -vmargs argument. Java Main then stores this value in eclipse.vmargs.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.ArgumentBag.#ctor(System.String)">
+            <summary>
+            Creates a new <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" /> that uses the provided argument string instead of serialzed properties.
+            </summary>
+            <param name="arguments">The arguments as one liner.</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.ArgumentBag.#ctor">
+            <summary>
+            Creates a new <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" /> with default properties.
+            </summary>
+            <exception cref="T:System.NotImplementedException">The operating system is not supported.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.ArgumentBag.ToString">
+            <summary>
+            Serializes this <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" /> into a string.
+            </summary>
+            <returns>
+            An argument one liner
+            </returns>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.ArgumentBag.ToJson(System.Boolean)">
+            <summary>
+            Converts this <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" /> into a JSON formatted string.
+            </summary>
+            <param name="indended">Whether or not the output should be indended.</param>
+            <returns>
+            A JSON formatted string
+            </returns>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.ArgumentBag.FromJson(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" /> from a JSON string.
+            </summary>
+            <param name="json">The string to deserialze.</param>
+            <returns>
+            An <see cref="T:KnimeNet.CommandLine.Types.ArgumentBag" />.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute">
+            <summary>
+            Attribute specific for signalling a command line argument
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.Seperator">
+            <summary>
+            Specifies how the argument key is seperated from the value.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.Repetition">
+            <summary>
+            For IEnumerable only. Specifies the way the key will be repeated. 
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.IsFlag">
+            <summary>
+            Indicates, if the argument is a flag. Flags are handled as keys but have no values.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.Name">
+            <summary>
+            Get the argument name.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.Order">
+            <summary>
+            Gets the order number.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.#ctor(System.String,KnimeNet.CommandLine.Types.Enums.ArgumentSeperator,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute"/> class.
+            </summary>
+            <param name="name">The command line key.</param>
+            <param name="seperator">Sets the key/value seperator.</param>
+            <param name="order">Sets the order for this argument</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.#ctor(System.String,KnimeNet.CommandLine.Types.Enums.ArgumentSeperator,KnimeNet.CommandLine.Types.Enums.KeyRepetition,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute"/> class.
+            </summary>
+            <param name="name">The command line key.</param>
+            <param name="seperator">Sets the key/value seperator.</param>
+            <param name="repetition">Sets the repitition type for the argument's key.</param>
+            <param name="order">Sets the order for this argument</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.Attributes.CommandLineArgumentAttribute"/> class.
+            This attribute is implicitely a flag. That means there is no value vor that key.
+            </summary>
+            <param name="name">The name of the argument.</param>
+            <param name="order">Sets the order for this argument</param>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Credential">
+            <summary>
+            Represents a KNIME workflow credential
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Credential.Name">
+            <summary>
+            The credential identifier.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Credential.Login">
+            <summary>
+            The users login name. Leave emtpy to be prompted for. 
+            </summary>
+            <remarks>Leaving this value empty is not useful in unattended situations</remarks>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.Credential.Password">
+            <summary>
+            The users password. Leave emtpy to be prompted for.
+            </summary>
+            <remarks>Leaving this value empty is not useful in unattended situations</remarks>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Credential.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.Credential"/> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Credential.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Enums.ArgumentSeperator">
+            <summary>
+            Represents the way argument keys are seperated from the argument values.
+            Example: key value or key=value
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.ArgumentSeperator.Space">
+            <summary>
+            Seperation via whitespace
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.ArgumentSeperator.Equals">
+            <summary>
+            Seperation via equals sign
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.ArgumentSeperator.None">
+            <summary>
+            No seperation at all.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Enums.ArgumentSeperatorExtensions.ToArgumentSeperatorString(KnimeNet.CommandLine.Types.Enums.ArgumentSeperator)">
+            <summary>
+            Gets the enum mebmber value of <see cref="T:KnimeNet.CommandLine.Types.Enums.ArgumentSeperator"/>.
+            </summary>
+            <param name="seperator">The seperator.</param>
+            <returns></returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Enums.KeyRepetition">
+            <summary>
+            Describes in case of IEnumerable arguments how to repeat the argument's key
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.KeyRepetition.None">
+            <summary>
+            The key should not be written at all.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.KeyRepetition.Single">
+            <summary>
+            The key should only be written one single time.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.KeyRepetition.ForEach">
+            <summary>
+            For key should be written for each value.
+            </summary>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.Enums.VariableType">
+            <summary>
+            Represents the type of the variable
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.VariableType.String">
+            <summary>
+            The variable is of type string.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.VariableType.Integer">
+            <summary>
+            The variable is of type integer.
+            </summary>
+        </member>
+        <member name="F:KnimeNet.CommandLine.Types.Enums.VariableType.Double">
+            <summary>
+            The variable is of type double.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.Enums.ParameterTypeExtensions.ToParameterTypeString(KnimeNet.CommandLine.Types.Enums.VariableType)">
+            <summary>
+            Gets the enum member value of <see cref="T:KnimeNet.CommandLine.Types.Enums.VariableType"/>
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.EventBasedTextWriter">
+            <summary>
+            Like a <see cref="T:System.IO.TextWriter"/> but instead of writing internally every write attempt triggers an event.
+            </summary>
+        </member>
+        <member name="E:KnimeNet.CommandLine.Types.EventBasedTextWriter.OnWrite">
+            <summary>
+            Called when the <see cref="T:System.IO.TextWriter"/>s Write method is called.
+            </summary>
+        </member>
+        <member name="E:KnimeNet.CommandLine.Types.EventBasedTextWriter.OnWriteLine">
+            <summary>
+            Called when the <see cref="T:System.IO.TextWriter"/>s WriteLine method is called.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.EventBasedTextWriter.Encoding">
+            <summary>
+            Change encoding to UTF8 as standard.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.EventBasedTextWriter.Write(System.String)">
+            <summary>
+            Calls the <see cref="E:KnimeNet.CommandLine.Types.EventBasedTextWriter.OnWrite"/>
+            </summary>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.EventBasedTextWriter.WriteLine(System.String)">
+            <summary>
+            Calls the <see cref="E:KnimeNet.CommandLine.Types.EventBasedTextWriter.OnWriteLine"/>
+            </summary>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.ExitStatus">
+            <summary>
+            A collection of information concerning the KNIME execution.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ExitStatus.LastErrorMessage">
+            <summary>
+            If an error occured in <see cref="T:KnimeNet.CommandLine.ShellProxy"/> this variable contains more information.
+            It is not intended to record KNIME errors. These are captured e.g. via <see cref="T:KnimeNet.CommandLine.Types.EventBasedTextWriter"/>s.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ExitStatus.KilledProcess">
+            <summary>
+            Signals if the started process was killed. In case the started process should be killed in case of an error the <see cref="T:KnimeNet.CommandLine.ShellProxy"/> needs to be instructed to do so.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.ExitStatus.ExitCode">
+            <summary>
+            Represents the exit code produced by KNIME.
+            </summary>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.MasterKey">
+            <summary>
+            Represents a KNIME workflow master key.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.MasterKey.Key">
+            <summary>
+            The masterkey. Will prompt if not provided.
+            </summary>
+            <remarks>Leaving this value empty is not useful in unattended situations</remarks>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.MasterKey.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.VmArgument">
+            <summary>
+            Represents a generic VM argument.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.VmArgument.Key">
+            <summary>
+            The key of the argument e.g. -Dmy.sys.prop
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.VmArgument.Value">
+            <summary>
+            The value of the argument.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.VmArgument.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.VmArgument"/> class.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.VmArgument.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.CommandLine.Types.WorkFlowVariable">
+            <summary>
+            Represents a KNIME workflow variable.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.WorkFlowVariable.Name">
+            <summary>
+            The variable identifier.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.WorkFlowVariable.Value">
+            <summary>
+            The varaible value.
+            </summary>
+        </member>
+        <member name="P:KnimeNet.CommandLine.Types.WorkFlowVariable.Type">
+            <summary>
+            The type of the variable.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.WorkFlowVariable.#ctor(System.String,System.String,KnimeNet.CommandLine.Types.Enums.VariableType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KnimeNet.CommandLine.Types.WorkFlowVariable"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="variableType">Type of the variable.</param>
+        </member>
+        <member name="M:KnimeNet.CommandLine.Types.WorkFlowVariable.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.Environment.OperatingSystem">
+            <summary>
+            Some functionality regarding the host's operating system
+            </summary>
+        </member>
+        <member name="M:KnimeNet.Environment.OperatingSystem.GetOsType">
+            <summary>
+            Gets the type of the os.
+            </summary>
+            <returns>The hosts <see cref="T:KnimeNet.Environment.Types.Enums.OsType"/></returns>
+        </member>
+        <member name="M:KnimeNet.Environment.OperatingSystem.uname(System.IntPtr)">
+            <summary>
+            From Managed.Windows.Forms/XplatUI
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:KnimeNet.Environment.OperatingSystem.IsRunningOnMac">
+            <summary>
+            Determines whether [is running on mac].
+            </summary>
+            <returns>
+              <c>true</c> if [is running on mac]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.Environment.Types.Enums.OsType">
+            <summary>
+            Enumeration of operating systems
+            </summary>
+        </member>
+        <member name="F:KnimeNet.Environment.Types.Enums.OsType.Windows">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:KnimeNet.Environment.Types.Enums.OsType.Mac">
+            <summary>
+            Macintosh
+            </summary>
+        </member>
+        <member name="F:KnimeNet.Environment.Types.Enums.OsType.X11">
+            <summary>
+            X11 based OS
+            </summary>
+        </member>
+        <member name="F:KnimeNet.Environment.Types.Enums.OsType.Other">
+            <summary>
+            All ohter OS types (that are not supported)
+            </summary>
+        </member>
+        <member name="T:KnimeNet.Extensions.ProcessExtension">
+            <summary>
+            Extensions for <see cref="T:System.Diagnostics.Process"/>es.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.Extensions.ProcessExtension.WaitForExitAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Waits asynchronously for the process to exit.
+            </summary>
+            <param name="process">The process to wait for cancellation.</param>
+            <param name="cancellationToken">A cancellation token. If invoked, the task will return
+            immediately as cancelled.</param>
+            <returns>
+            A Task that waits for the process to end.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.Extensions.ActionExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Action"/>s.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.Extensions.ActionExtensions.ReadAsync(System.Action{System.Diagnostics.DataReceivedEventHandler},System.Action{System.Diagnostics.DataReceivedEventHandler},System.IO.TextWriter,System.Threading.CancellationToken)">
+            <summary>
+            Reads the data from the specified data recieved event and writes it to the
+            <paramref name="textWriter" />.
+            </summary>
+            <param name="addHandler">Adds the event handler.</param>
+            <param name="removeHandler">Removes the event handler.</param>
+            <param name="textWriter">The text writer.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            A task representing the asynchronous operation.
+            </returns>
+        </member>
+        <member name="T:KnimeNet.Extensions.StringExtensions">
+            <summary>
+            Extensions for strings.
+            </summary>
+        </member>
+        <member name="M:KnimeNet.Extensions.StringExtensions.CombineArguments(System.String,System.String,System.String,System.String)">
+            <summary>
+            Conactenates a given argument string with a new argument key and value.
+            </summary>
+            <param name="oldArguments">The existing argument string.</param>
+            <param name="argumentKey">The key of the new argument.</param>
+            <param name="argumentValue">The value of the new argument.</param>
+            <param name="seperator">The separtor between key and value.</param>
+            <returns>The combined old an new arguments</returns>
+        </member>
+    </members>
+</doc>

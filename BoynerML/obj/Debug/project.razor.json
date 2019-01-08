@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/BoynerML.csproj",
+  "TargetFramework": "v4.7.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

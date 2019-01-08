@@ -1,0 +1,67 @@
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/ApplicationInsights.config
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.dll.config
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Datasets/Boyner Color-Group Recommendation.csv
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Datasets/Boyner Gender Recommendation.csv
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Datasets/Boyner Product-Type Recommendation.csv
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Datasets/Boyner Product Recommendation Dataset.csv
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Datasets/Boyner Product Dataset.csv
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/BoynerML.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/BoynerML.pdb
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.MachineLearning.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Math.Core.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Math.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Statistics.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Antlr3.Runtime.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/KnimeNet.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.Agent.Intercept.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.DependencyCollector.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.PerfCounterCollector.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.ServerTelemetryChannel.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.Web.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.WindowsServer.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.ApplicationInsights.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AspNet.TelemetryCorrelation.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.Web.Infrastructure.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Newtonsoft.Json.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Diagnostics.DiagnosticSource.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Net.Http.Formatting.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Helpers.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Http.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Http.WebHost.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Mvc.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Optimization.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Razor.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.Deployment.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.Razor.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/WebGrease.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.MachineLearning.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Math.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Math.Core.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Accord.Statistics.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/KnimeNet.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Newtonsoft.Json.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Net.Http.Formatting.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Helpers.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Http.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Http.WebHost.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Mvc.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Optimization.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.Razor.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.Deployment.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Web.WebPages.Razor.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Antlr3.Runtime.pdb
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/System.Diagnostics.DiagnosticSource.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AspNet.TelemetryCorrelation.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.DependencyCollector.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.WindowsServer.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.AI.Web.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/obj/Debug/BoynerML.csproj.CoreCompileInputs.cache
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/obj/Debug/BoynerML.csproj.CopyComplete
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/obj/Debug/BoynerML.dll
+/Users/erdem.celik/Documents/erdem/source/repos/ProductRecommendation/BoynerML/obj/Debug/BoynerML.pdb
